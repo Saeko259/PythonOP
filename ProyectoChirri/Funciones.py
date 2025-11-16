@@ -40,6 +40,7 @@ def ImprimirCartones(PackCartones,NombresP):
         CartonesActuales = PackCartones[idx: idx+4]
         #columna general
         for idj in range(idx,idx+len(CartonesActuales)):
+            
             print(f"{NombresP[idj]}", end ="              ")
         print()    
         for columna in range (5):
@@ -76,3 +77,56 @@ def NombresJugadores(NumP):
         else:
             ListaNombres.append(nombre)
     return ListaNombres
+
+#Esta funcion maneja la parte inicial del juego
+def InicioJuego():
+    NumP = -1
+    FigG = -1
+    print("BIENVENIDO AL PROGRAMA INTERACTIVO DE BINGO")
+    print("Antes de comenzar el juego te pediremos que ingreses dos cosas:")
+            
+    try: 
+        NumP = int(input("1. Ingrese el numero de jugadores: "))
+    except ValueError:
+        print(" Debe ingresar un numero entero")
+    while ( NumP < 0 ):
+        NumP= int(input("Ingresaste un valor erroneo, porfavor ingresa un numero de Jugadores Valido: "))
+    print("2.Digita alguna de las siguientes opciones para escoger la figura ganadora:")
+    print("     1. 'O': Primera y última fila, y primera y última columna.")
+    print("     2. 'X': Las dos diagonales del cartón")
+    print("     3. 'Cartón Completo': Todas las filas y columnas")
+    try:
+        FigG = int(input("Opcion deseada: "))
+    except ValueError:
+        print(" Debe ingresar un numero entero")
+    while((FigG <0 )| (FigG >3)):
+        FigG = int(input("Ingrese porfavor un valor valido:"))
+    return NumP,FigG
+
+#Se encarga de sacar un numero aleatorio asegurandose de 
+def NumeroBalota(NumerosSacados):
+    NumeroActual = random.randint(1,75)
+    #Debemos revisar de manera constante si el numero se repite, por esto haremos lo siguiente
+    repetido = 1
+    while (repetido == 1): 
+        repetido = 0
+        for letra in NumerosSacados:
+            for idx in letra:
+                if( idx == NumeroActual):
+                    NumeroActual = random.randint(1,75)
+                    #Vuelve a buscar si el nuevo numero no se obtuvo antes
+                    repetido= 1
+    if((NumeroActual >=1) and (NumeroActual<16) ):
+        NumerosSacados[0].append(NumeroActual)
+    elif((NumeroActual >=16) and (NumeroActual<31)):
+        NumerosSacados[1].append(NumeroActual)
+    elif((NumeroActual >=31) and (NumeroActual<46)):
+        NumerosSacados[2].append(NumeroActual)
+    elif((NumeroActual >=46) and (NumeroActual<61)):
+        NumerosSacados[3].append(NumeroActual)
+    elif((NumeroActual >61) and (NumeroActual<76)):
+        NumerosSacados[4].append(NumeroActual)
+    #Organizamos el arreglo de los numeros obtenidos
+    for letras in NumerosSacados:
+        letras.sort()
+    return NumeroActual    
