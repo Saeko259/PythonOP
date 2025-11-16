@@ -33,7 +33,7 @@ def ImprimirCarton(CartonI):
             print(f"{numero[0]:3d}", end="")
         print()
         
-def ImprimirCartones(PackCartones,NombresP):
+def Visualizacion(PackCartones,NombresP):
     #Vamos de 4 en 4, con todos los cartones que hayan
     for idx in range(0, len(PackCartones), 4):
         #Vamos de 4 en 4 cartones
@@ -55,8 +55,10 @@ def ImprimirCartones(PackCartones,NombresP):
                     
                     if ( fila %5 == 0):
                         print("| ", end ="")
-                        
-                    print(f"{cartones[columna][fila][0]:3d}", end ="")
+                    if (cartones[fila][columna][1] == 1):
+                        print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
+                    else: 
+                        print(f"{cartones[fila][columna][0]:3d}", end ="")
                 #Espaciado entre matrices
                 print(" | ", end ="")
             print ()
@@ -130,3 +132,12 @@ def NumeroBalota(NumerosSacados):
     for letras in NumerosSacados:
         letras.sort()
     return NumeroActual    
+
+def VerificacionTablero(Cartones, NumerosSacados):
+    for letras in NumerosSacados:
+        for numero in letras:
+            for carton in Cartones:
+                for filas in range(5):
+                    for columnas in range(5):
+                        if (carton[filas][columnas][0] == numero):
+                            carton[filas][columnas][1] = 1

@@ -1,9 +1,16 @@
 from Funciones import * 
-NumP= int(input("Ingrese el numero de jugadores: "))
+NumerosSacados= [[],[],[],[],[]]
+#NumP= int(input("Ingrese el numero de jugadores: "))
+
+NumP, FigG = InicioJuego()
 nombres= NombresJugadores(NumP)
 y = GenerarCartones(NumP)
-ImprimirCartones(y,nombres)
-
+for i in range(30):
+    x = NumeroBalota(NumerosSacados)
+    
+print(NumerosSacados)
+VerificacionTablero(y,NumerosSacados)
+Visualizacion(y, nombres)
 
 
     
