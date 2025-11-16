@@ -39,11 +39,12 @@ def VisualizacionSinNombres(PackCartones):
     for idx in range(0, len(PackCartones), 4):
         #Vamos de 4 en 4 cartones
         CartonesActuales = PackCartones[idx: idx+4]
-        #columna general
+        
         for idj in range(idx,idx+len(CartonesActuales)):
             
             print(idj+1, end ="                    ")
         print()    
+        #columna general
         for columna in range (5):
             if (columna == 0):
                     for idx in range (10 * len(CartonesActuales)):
@@ -257,3 +258,27 @@ def BINGO(NumerosSacados):
         print()
     print("____________________________________________________________________________________________")
     return
+
+def PantallaFin(ListaGanadores, ListaNombres,PaqueteCartones):
+    for idx in ListaGanadores:
+        print(f"El carton ganador fue el del jugador {ListaNombres[idx]} ")
+        for columna in range (5):
+            if (columna == 0):
+                    for idj in range (10):
+                        print("__", end ="")
+                    print()
+            #Cada uno de los cartones de los que estamos trabajando actualmente
+            cartones = PaqueteCartones[idx]
+            #Imprimimos las 5 columas de la fila en la que estemos
+            for fila in range(5):  
+                if ( fila %5 == 0):
+                    print("| ", end ="")
+                if (cartones[fila][columna][1] == 1):
+                    print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
+                else: 
+                    print(f"{cartones[fila][columna][0]:3d}", end ="")       
+            print(" |", end= "")
+            print()
+        
+        
+        

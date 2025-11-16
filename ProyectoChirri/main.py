@@ -1,6 +1,5 @@
 from Funciones import * 
 NumerosSacados= [[],[],[],[],[]]
-
 NumP, FigG = InicioJuego()
 PaqueteCartones = GenerarCartones(NumP)
 VisualizacionSinNombres(PaqueteCartones)
@@ -20,8 +19,7 @@ while(len(ListaGanadores)== 0):
     except ValueError:
         print("Valor Erroneo")
 
-print(ListaGanadores)
-
+PantallaFin(ListaGanadores, nombres, PaqueteCartones)
 
     
     
