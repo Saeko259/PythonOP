@@ -1,6 +1,7 @@
 from Funciones import * 
-nombres=["Samuel","Saul","Isabella","Morron","Charris"]
-y = GenerarCartones(2)
+NumP= int(input("Ingrese el numero de jugadores: "))
+nombres= NombresJugadores(NumP)
+y = GenerarCartones(NumP)
 ImprimirCartones(y,nombres)
 
 

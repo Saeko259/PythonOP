@@ -54,7 +54,7 @@ def ImprimirCartones(PackCartones,NombresP):
                     
                     if ( fila %5 == 0):
                         print("| ", end ="")
-                    
+                        
                     print(f"{cartones[columna][fila][0]:3d}", end ="")
                 #Espaciado entre matrices
                 print(" | ", end ="")
@@ -66,4 +66,13 @@ def ImprimirCartones(PackCartones,NombresP):
         print()
         
 
-        
+def NombresJugadores(NumP):
+    ListaNombres = []
+    for idx in range(NumP):
+        nombre = str(input(f"Ingrese el nombre del jugador #{idx+1}: "))
+        if (len(nombre) > 15):
+            nombre = nombre[0:15]
+            ListaNombres.append(nombre)
+        else:
+            ListaNombres.append(nombre)
+    return ListaNombres
