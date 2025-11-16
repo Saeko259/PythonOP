@@ -105,7 +105,7 @@ def InicioJuego():
         FigG = int(input("Ingrese porfavor un valor valido:"))
     return NumP,FigG
 
-#Se encarga de sacar un numero aleatorio asegurandose de 
+#Se encarga de sacar un numero aleatorio asegurandose de que no se repita
 def NumeroBalota(NumerosSacados):
     NumeroActual = random.randint(1,75)
     #Debemos revisar de manera constante si el numero se repite, por esto haremos lo siguiente
@@ -126,13 +126,14 @@ def NumeroBalota(NumerosSacados):
         NumerosSacados[2].append(NumeroActual)
     elif((NumeroActual >=46) and (NumeroActual<61)):
         NumerosSacados[3].append(NumeroActual)
-    elif((NumeroActual >61) and (NumeroActual<76)):
+    elif((NumeroActual >=61) and (NumeroActual<76)):
         NumerosSacados[4].append(NumeroActual)
     #Organizamos el arreglo de los numeros obtenidos
     for letras in NumerosSacados:
         letras.sort()
     return NumeroActual    
 
+#Verifica si en los cartones hay alguno de los numeros obtenidos
 def VerificacionTablero(Cartones, NumerosSacados):
     for letras in NumerosSacados:
         for numero in letras:
@@ -141,3 +142,53 @@ def VerificacionTablero(Cartones, NumerosSacados):
                     for columnas in range(5):
                         if (carton[filas][columnas][0] == numero):
                             carton[filas][columnas][1] = 1
+                            
+def CondicionVictoria(FigG,PaqueteCartones):
+    ListaGanadores = []
+    match FigG:
+        case 1:
+            for carton in PaqueteCartones:
+                contador = 0   
+                #Revisamos la primera fila
+                for idx in range(5):
+                    if (carton[idx][0][1] == 1):
+                        contador += 1
+                #Revisamos la ultima fila
+                for idx in range(5):
+                    if (carton[idx][4][1] == 1):
+                        contador += 1
+                #Revisamos los tres items faltantes de la primera columna
+                for idx in range(1,4):
+                    if (carton[0][idx][1] == 1):
+                        contador += 1
+                #Revisamos los tres items faltantes de la ultima columna
+                for idx in range(1,4):
+                    if (carton[4][idx][1] == 1):
+                        contador += 1
+                if ( contador == 16):
+                    ListaGanadores.append(PaqueteCartones.index(carton))
+                                    
+        case 2:
+            for carton in PaqueteCartones:
+                contador = 0   
+                #Revisamos la diagonal principal
+                for idx in range(5):
+                    if (carton[idx][idx][1] == 1):
+                        contador += 1
+                #Revisamos la diagonal inversa 
+                for idx in range(5):
+                    fila = 4 - idx
+                    if (carton[idx][fila][1] == 1):
+                        contador += 1
+                if ( contador == 10):
+                    ListaGanadores.append(PaqueteCartones.index(carton))
+        case 3:
+            for carton in PaqueteCartones:
+                contador = 0   
+                for filas in range(5):
+                    for columnas in range(5):
+                        if (carton[filas][columnas][1] == 1):
+                            contador += 1
+                if ( contador == 25):
+                    ListaGanadores.append(PaqueteCartones.index(carton))
+    return ListaGanadores

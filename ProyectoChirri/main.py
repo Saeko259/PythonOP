@@ -1,16 +1,16 @@
 from Funciones import * 
 NumerosSacados= [[],[],[],[],[]]
-#NumP= int(input("Ingrese el numero de jugadores: "))
-
+nombres = []
 NumP, FigG = InicioJuego()
 nombres= NombresJugadores(NumP)
 y = GenerarCartones(NumP)
-for i in range(30):
+for i in range(75):
     x = NumeroBalota(NumerosSacados)
     
 print(NumerosSacados)
 VerificacionTablero(y,NumerosSacados)
 Visualizacion(y, nombres)
+print (CondicionVictoria(FigG, y))
 
 
     
