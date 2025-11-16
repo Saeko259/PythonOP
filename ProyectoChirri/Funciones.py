@@ -33,7 +33,45 @@ def ImprimirCarton(CartonI):
             print(f"{numero[0]:3d}", end="")
         print()
         
-def Visualizacion(PackCartones,NombresP):
+def VisualizacionSinNombres(PackCartones):
+    print("             CARTONES GENERADOS")
+      #Vamos de 4 en 4, con todos los cartones que hayan
+    for idx in range(0, len(PackCartones), 4):
+        #Vamos de 4 en 4 cartones
+        CartonesActuales = PackCartones[idx: idx+4]
+        #columna general
+        for idj in range(idx,idx+len(CartonesActuales)):
+            
+            print(idj+1, end ="                    ")
+        print()    
+        for columna in range (5):
+            if (columna == 0):
+                    for idx in range (10 * len(CartonesActuales)):
+                        print("__", end ="")
+                    print()
+            #Cada uno de los cartones de los que estamos trabajando actualmente
+            for cartones in CartonesActuales:
+                #Imprimimos las 5 columas de la fila en la que estemos
+                for fila in range(5):
+                    
+                    if ( fila %5 == 0):
+                        print("| ", end ="")
+                    if (cartones[fila][columna][1] == 1):
+                        print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
+                    else: 
+                        print(f"{cartones[fila][columna][0]:3d}", end ="")
+                #Espaciado entre matrices
+                print(" | ", end ="")
+            print ()
+            if (columna == 4):
+                    for j in range (10 * len(CartonesActuales)):
+                        print("__", end ="")
+                    
+        print()      
+        
+def VisualizacionConNombres(PackCartones,NombresP):
+    print("____________________________________________________________________________________________")
+    print("             CARTONES ACTUALIZADOS")
     #Vamos de 4 en 4, con todos los cartones que hayan
     for idx in range(0, len(PackCartones), 4):
         #Vamos de 4 en 4 cartones
@@ -70,6 +108,8 @@ def Visualizacion(PackCartones,NombresP):
         
 
 def NombresJugadores(NumP):
+    print("____________________________________________________________________________________________")
+    print("Ahora ingrese los nombres de los jugadores!!")
     ListaNombres = []
     for idx in range(NumP):
         nombre = str(input(f"Ingrese el nombre del jugador #{idx+1}: "))
@@ -103,6 +143,7 @@ def InicioJuego():
         print(" Debe ingresar un numero entero")
     while((FigG <0 )| (FigG >3)):
         FigG = int(input("Ingrese porfavor un valor valido:"))
+    print("____________________________________________________________________________________________")
     return NumP,FigG
 
 #Se encarga de sacar un numero aleatorio asegurandose de que no se repita
@@ -167,7 +208,6 @@ def CondicionVictoria(FigG,PaqueteCartones):
                         contador += 1
                 if ( contador == 16):
                     ListaGanadores.append(PaqueteCartones.index(carton))
-                                    
         case 2:
             for carton in PaqueteCartones:
                 contador = 0   
@@ -192,3 +232,28 @@ def CondicionVictoria(FigG,PaqueteCartones):
                 if ( contador == 25):
                     ListaGanadores.append(PaqueteCartones.index(carton))
     return ListaGanadores
+
+def BINGO(NumerosSacados):
+    print("____________________________________________________________________________________________")
+    for letra in NumerosSacados:
+        c = 0
+        for numeros in letra:
+            if ((NumerosSacados.index(letra) == 0) and (c == 0) ):
+                print("B: ", end ="")
+                c= c+1
+            elif ((NumerosSacados.index(letra) == 1) and (c == 0) ):
+                print("I: ", end ="")
+                c= c+1
+            elif ((NumerosSacados.index(letra) == 2) and (c == 0) ):
+                print("N: ", end ="")
+                c= c+1
+            elif ((NumerosSacados.index(letra) == 3) and (c == 0) ):
+                print("G: ", end ="")
+                c= c+1
+            elif ((NumerosSacados.index(letra) == 4) and (c == 0) ):
+                print("O: ", end ="")
+                c= c+1
+            print(f"{numeros:2d}", end = ", ")
+        print()
+    print("____________________________________________________________________________________________")
+    return

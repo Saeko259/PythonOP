@@ -1,16 +1,26 @@
 from Funciones import * 
 NumerosSacados= [[],[],[],[],[]]
-nombres = []
+
 NumP, FigG = InicioJuego()
+PaqueteCartones = GenerarCartones(NumP)
+VisualizacionSinNombres(PaqueteCartones)
 nombres= NombresJugadores(NumP)
-y = GenerarCartones(NumP)
-for i in range(75):
-    x = NumeroBalota(NumerosSacados)
-    
-print(NumerosSacados)
-VerificacionTablero(y,NumerosSacados)
-Visualizacion(y, nombres)
-print (CondicionVictoria(FigG, y))
+VisualizacionConNombres(PaqueteCartones,nombres)
+ListaGanadores = []
+while(len(ListaGanadores)== 0):
+    try:
+        if (input("Dale enter para Sacar una balota: ")  == ""):
+            nact = NumeroBalota(NumerosSacados)
+            print(f"El numero obtenido fue {nact}")
+            VerificacionTablero(PaqueteCartones, NumerosSacados)
+            BINGO(NumerosSacados)
+            ListaGanadores = CondicionVictoria(FigG, PaqueteCartones)
+            print("Ahora se visualizara el tablero actualizado: ")
+            VisualizacionConNombres(PaqueteCartones,nombres)
+    except ValueError:
+        print("Valor Erroneo")
+
+print(ListaGanadores)
 
 
     
