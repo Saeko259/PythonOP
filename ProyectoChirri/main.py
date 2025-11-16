@@ -1,6 +1,6 @@
 from Funciones import * 
-nombres=[]
-y = GenerarCartones(5)
+nombres=["Samuel","Saul","Isabella","Morron","Charris"]
+y = GenerarCartones(2)
 ImprimirCartones(y,nombres)
 
 
