@@ -34,6 +34,7 @@ def ImprimirCarton(CartonI):
         print()
         
 def VisualizacionSinNombres(PackCartones):
+    BINGO = ["B","I","N","G","O"]
     print("             CARTONES GENERADOS")
       #Vamos de 4 en 4, con todos los cartones que hayan
     for idx in range(0, len(PackCartones), 4):
@@ -50,6 +51,15 @@ def VisualizacionSinNombres(PackCartones):
                     for idx in range (10 * len(CartonesActuales)):
                         print("__", end ="")
                     print()
+                    
+                    for idx in range (1 * len(CartonesActuales)):
+                        print("|  ", end ="")
+                        for letra in range(5):
+                            print(f"{BINGO[letra]:3}", end="")
+                        print("| ", end ="")
+                    print()
+                    
+                    
             #Cada uno de los cartones de los que estamos trabajando actualmente
             for cartones in CartonesActuales:
                 #Imprimimos las 5 columas de la fila en la que estemos
