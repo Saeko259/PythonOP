@@ -43,21 +43,20 @@ def VisualizacionSinNombres(PackCartones):
         
         for idj in range(idx,idx+len(CartonesActuales)):
             
-            print(idj+1, end ="                    ")
+            print(idj+1, end ="                       ")
         print()    
         #columna general
         for columna in range (5):
             if (columna == 0):
-                    for idx in range (10 * len(CartonesActuales)):
-                        
-                        print("__", end ="")
+                    for idx in range(len(CartonesActuales)):
+                        print("+-------------------+", end="   ")
                     print()
                     
                     for idx in range (1 * len(CartonesActuales)):
-                        print("|  ", end ="")
+                        print("|    ", end ="")
                         for letra in range(5):
                             print(f"{BINGO[letra]:3}", end="")
-                        print("| ", end ="")
+                        print("|   ", end ="")
                     print()
                     
                     
@@ -67,21 +66,21 @@ def VisualizacionSinNombres(PackCartones):
                 for fila in range(5):
                     
                     if ( fila %5 == 0):
-                        print("| ", end ="")
+                        print("| ", end ="  ")
                     if (cartones[fila][columna][1] == 1):
                         print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
                     else: 
                         print(f"{cartones[fila][columna][0]:3d}", end ="")
                 #Espaciado entre matrices
-                print(" | ", end ="")
+                print(" | ", end ="  ")
             print ()
             if (columna == 4):
-                    for j in range (10 * len(CartonesActuales)):
-                        print("__", end ="")
-                    
+                    for idx in range(len(CartonesActuales)):
+                        print("+-------------------+", end="   ")      
         print()      
         
 def VisualizacionConNombres(PackCartones,NombresP):
+    BINGO = ["B","I","N","G","O"]
     print("____________________________________________________________________________________________")
     print("             CARTONES ACTUALIZADOS")
     #Vamos de 4 en 4, con todos los cartones que hayan
@@ -91,32 +90,42 @@ def VisualizacionConNombres(PackCartones,NombresP):
         #columna general
         for idj in range(idx,idx+len(CartonesActuales)):
             
-            print(f"{NombresP[idj]}", end ="              ")
+            print(f"{NombresP[idj]}", end ="")
+            for i in range(0,24-len(NombresP[idj])):
+                print(" ", end ="")
         print()    
         for columna in range (5):
             if (columna == 0):
-                    for idx in range (10 * len(CartonesActuales)):
-                        print("__", end ="")
+                    for idx in range(len(CartonesActuales)):
+                        print("+-------------------+", end="   ")
                     print()
+                    
+                    for idx in range (1 * len(CartonesActuales)):
+                        print("|    ", end ="")
+                        for letra in range(5):
+                            print(f"{BINGO[letra]:3}", end="")
+                        print("|   ", end ="")
+                    print()
+                    
+                    
             #Cada uno de los cartones de los que estamos trabajando actualmente
             for cartones in CartonesActuales:
                 #Imprimimos las 5 columas de la fila en la que estemos
                 for fila in range(5):
                     
                     if ( fila %5 == 0):
-                        print("| ", end ="")
+                        print("| ", end ="  ")
                     if (cartones[fila][columna][1] == 1):
                         print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
                     else: 
                         print(f"{cartones[fila][columna][0]:3d}", end ="")
                 #Espaciado entre matrices
-                print(" | ", end ="")
+                print(" | ", end ="  ")
             print ()
             if (columna == 4):
-                    for j in range (10 * len(CartonesActuales)):
-                        print("__", end ="")
-                    
-        print()
+                    for idx in range(len(CartonesActuales)):
+                        print("+-------------------+", end="   ")      
+        print()      
         
 
 def NombresJugadores(NumP):
@@ -271,25 +280,39 @@ def BINGO(NumerosSacados):
     return
 
 def PantallaFin(ListaGanadores, ListaNombres,PaqueteCartones):
+    BINGO = ["B","I","N","G","O"]
     for idx in ListaGanadores:
         print(f"El carton ganador fue el del jugador {ListaNombres[idx]} ")
         for columna in range (5):
             if (columna == 0):
-                    for idj in range (10):
-                        print("__", end ="")
-                    print()
+                        print("+-------------------+", end="   ")
+                        print()
+                        print("|    ", end ="")
+                        for letra in range(5):
+                            print(f"{BINGO[letra]:3}", end="")
+                        print("|   ", end ="")
+                        print()
+                        
+                    
+                    
             #Cada uno de los cartones de los que estamos trabajando actualmente
             cartones = PaqueteCartones[idx]
-            #Imprimimos las 5 columas de la fila en la que estemos
-            for fila in range(5):  
-                if ( fila %5 == 0):
-                    print("| ", end ="")
-                if (cartones[fila][columna][1] == 1):
-                    print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
-                else: 
-                    print(f"{cartones[fila][columna][0]:3d}", end ="")       
-            print(" |", end= "")
-            print()
+                #Imprimimos las 5 columas de la fila en la que estemos
+            for fila in range(5):
+                    
+                    if ( fila %5 == 0):
+                        print("| ", end ="  ")
+                    if (cartones[fila][columna][1] == 1):
+                        print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
+                    else: 
+                        print(f"{cartones[fila][columna][0]:3d}", end ="")
+                #Espaciado entre matrices
+            print(" | ", end ="  ")
+            print ()
+            if (columna == 4):
+               
+                        print("+-------------------+", end="   ")      
+        print()
         
         
         
