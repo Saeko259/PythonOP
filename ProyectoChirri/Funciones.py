@@ -49,6 +49,7 @@ def VisualizacionSinNombres(PackCartones):
         for columna in range (5):
             if (columna == 0):
                     for idx in range (10 * len(CartonesActuales)):
+                        
                         print("__", end ="")
                     print()
                     
