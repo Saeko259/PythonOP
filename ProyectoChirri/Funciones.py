@@ -90,8 +90,8 @@ def VisualizacionConNombres(PackCartones,NombresP):
         #columna general
         for idj in range(idx,idx+len(CartonesActuales)):
             
-            print(f"{NombresP[idj]}", end ="")
-            for i in range(0,24-len(NombresP[idj])):
+            print(f"{idj+1}.{NombresP[idj]}", end ="")
+            for i in range(0,22-len(NombresP[idj])):
                 print(" ", end ="")
         print()    
         for columna in range (5):
