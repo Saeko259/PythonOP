@@ -285,9 +285,9 @@ def PantallaFin(ListaGanadores, ListaNombres,PaqueteCartones):
         print(f"El carton ganador fue el del jugador {ListaNombres[idx]} ")
         for columna in range (5):
             if (columna == 0):
-                        print("+-------------------+", end="   ")
+                        print("+-----------------+", end="   ")
                         print()
-                        print("|    ", end ="")
+                        print("|  ", end ="")
                         for letra in range(5):
                             print(f"{BINGO[letra]:3}", end="")
                         print("|   ", end ="")
@@ -301,7 +301,7 @@ def PantallaFin(ListaGanadores, ListaNombres,PaqueteCartones):
             for fila in range(5):
                     
                     if ( fila %5 == 0):
-                        print("| ", end ="  ")
+                        print("| ", end ="")
                     if (cartones[fila][columna][1] == 1):
                         print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
                     else: 
@@ -311,7 +311,7 @@ def PantallaFin(ListaGanadores, ListaNombres,PaqueteCartones):
             print ()
             if (columna == 4):
                
-                        print("+-------------------+", end="   ")      
+                        print("+-----------------+", end="   ")      
         print()
         
         
