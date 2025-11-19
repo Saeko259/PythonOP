@@ -43,17 +43,17 @@ def VisualizacionSinNombres(PackCartones):
         
         for idj in range(idx,idx+len(CartonesActuales)):
             
-            print(idj+1, end ="                       ")
+            print(idj+1, end ="                     ")
         print()    
         #columna general
         for columna in range (5):
             if (columna == 0):
                     for idx in range(len(CartonesActuales)):
-                        print("+-------------------+", end="   ")
+                        print("+-----------------+", end="   ")
                     print()
                     
                     for idx in range (1 * len(CartonesActuales)):
-                        print("|    ", end ="")
+                        print("|  ", end ="")
                         for letra in range(5):
                             print(f"{BINGO[letra]:3}", end="")
                         print("|   ", end ="")
@@ -66,7 +66,7 @@ def VisualizacionSinNombres(PackCartones):
                 for fila in range(5):
                     
                     if ( fila %5 == 0):
-                        print("| ", end ="  ")
+                        print("| ", end ="")
                     if (cartones[fila][columna][1] == 1):
                         print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
                     else: 
@@ -76,7 +76,7 @@ def VisualizacionSinNombres(PackCartones):
             print ()
             if (columna == 4):
                     for idx in range(len(CartonesActuales)):
-                        print("+-------------------+", end="   ")      
+                        print("+-----------------+", end="   ")      
         print()      
         
 def VisualizacionConNombres(PackCartones,NombresP):
@@ -91,17 +91,17 @@ def VisualizacionConNombres(PackCartones,NombresP):
         for idj in range(idx,idx+len(CartonesActuales)):
             
             print(f"{idj+1}.{NombresP[idj]}", end ="")
-            for i in range(0,22-len(NombresP[idj])):
+            for i in range(0,20-len(NombresP[idj])):
                 print(" ", end ="")
         print()    
         for columna in range (5):
             if (columna == 0):
                     for idx in range(len(CartonesActuales)):
-                        print("+-------------------+", end="   ")
+                        print("+-----------------+", end="   ")
                     print()
                     
                     for idx in range (1 * len(CartonesActuales)):
-                        print("|    ", end ="")
+                        print("|  ", end ="")
                         for letra in range(5):
                             print(f"{BINGO[letra]:3}", end="")
                         print("|   ", end ="")
@@ -114,7 +114,7 @@ def VisualizacionConNombres(PackCartones,NombresP):
                 for fila in range(5):
                     
                     if ( fila %5 == 0):
-                        print("| ", end ="  ")
+                        print("| ", end ="")
                     if (cartones[fila][columna][1] == 1):
                         print(f"\033[32m{cartones[fila][columna][0]:3d}\033[0m", end="")
                     else: 
@@ -124,7 +124,7 @@ def VisualizacionConNombres(PackCartones,NombresP):
             print ()
             if (columna == 4):
                     for idx in range(len(CartonesActuales)):
-                        print("+-------------------+", end="   ")      
+                        print("+-----------------+", end="   ")      
         print()      
         
 
